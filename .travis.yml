@@ -1,5 +1,10 @@
 language: ruby
 cache: bundler
+services:
+  - postgresql
+before_script:
+  - psql -c 'create database test;' -U postgres
+  - cp config/database.yml.travis config/database.yml
 rvm:
   - 2.4.2
 script:
