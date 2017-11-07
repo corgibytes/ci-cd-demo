@@ -3,5 +3,6 @@ Rails.application.routes.draw do
 
   resource :calculator, controller: "calculator", only: [] do
     get :add
+    get :negate
   end
 end

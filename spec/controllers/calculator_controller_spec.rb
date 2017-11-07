@@ -21,4 +21,24 @@ RSpec.describe CalculatorController, type: :controller do
       expect(response_json).to eq(expected_response)
     end
   end
+
+  describe "GET negate" do
+    it 'negates the value' do
+      get :negate, params: { q: 12 }
+
+      expect(response.status).to eq(200)
+
+      response_json = JSON.parse(response.body)
+
+      expected_response = {
+        'params' => [
+          { 'name' => 'q', 'value' => 12 }
+        ],
+        'operation' => 'negate',
+        'result' => -12
+      }
+
+      expect(response_json).to eq(expected_response)
+    end
+  end
 end
